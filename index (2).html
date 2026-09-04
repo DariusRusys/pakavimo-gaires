@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Goldinga | Pakavimo gairės</title>
+  <meta name="description" content="Trumpa Goldinga pakavimo instrukcija grąžinant juvelyrinius gaminius." />
+  <style>
+    :root {
+      --gold: #b99a5f;
+      --gold-dark: #84693b;
+      --ink: #26211c;
+      --muted: #6f665b;
+      --line: #e8ddcb;
+      --paper: #fffdf8;
+      --cream: #f7f0e4;
+      --cream-2: #fbf7ef;
+      --ok: #4f6b52;
+      --danger: #8a4d42;
+      --shadow: 0 18px 48px rgba(38, 33, 28, 0.08);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(185,154,95,0.16), transparent 34rem),
+        linear-gradient(180deg, #fffaf2 0%, #fbf7ef 52%, #fffdf8 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .top-strip {
+      background: var(--ink);
+      color: #f9f1df;
+      font-size: 13px;
+      letter-spacing: 0.03em;
+    }
+
+    .top-strip .inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 9px 22px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(255, 253, 248, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(185, 154, 95, 0.22);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: Georgia, serif;
+      font-size: 21px;
+      color: var(--gold-dark);
+      background: #fff;
+      box-shadow: 0 8px 22px rgba(185,154,95,0.14);
+    }
+
+    .brand-text {
+      display: grid;
+      line-height: 1.1;
+    }
+
+    .brand-text strong {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 25px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-text span {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a:hover { border-color: var(--gold); color: var(--ink); }
+
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 64px 22px 34px;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid rgba(185,154,95,0.35);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.68);
+      color: var(--gold-dark);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 22px 0 18px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.03;
+      font-weight: 500;
+      letter-spacing: -0.035em;
+    }
+
+    .lead {
+      max-width: 690px;
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0 0 28px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid var(--gold);
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    .btn.primary {
+      background: var(--ink);
+      color: #fff7e8;
+      border-color: var(--ink);
+      box-shadow: 0 14px 30px rgba(37,33,29,0.14);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.7);
+      color: var(--ink);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(37,33,29,0.12);
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      padding: 30px;
+      background: linear-gradient(145deg, #fff 0%, #fff8ec 100%);
+      border: 1px solid rgba(185,154,95,0.28);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40% auto auto -20%;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(185,154,95,0.14);
+    }
+
+    .package-illustration {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto 18px;
+      display: block;
+    }
+
+    .hero-card h2 {
+      margin: 0 0 8px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 30px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .hero-card p {
+      margin: 0 auto;
+      max-width: 370px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 10px 22px 72px;
+    }
+
+    section { scroll-margin-top: 95px; }
+
+    .section-head {
+      max-width: 760px;
+      margin: 0 auto 24px;
+      text-align: center;
+    }
+
+    .section-head h2 {
+      margin: 0 0 10px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(30px, 4vw, 44px);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .rule-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin: 0 0 48px;
+    }
+
+    .rule-card {
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(185,154,95,0.22);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 10px 28px rgba(38,33,28,0.05);
+      min-height: 210px;
+    }
+
+    .number {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: #fff7e8;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .rule-card h3 {
+      margin: 0 0 10px;
+      font-size: 19px;
+      line-height: 1.25;
+    }
+
+    .rule-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .quick {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 44px;
+    }
+
+    .quick-card {
+      border-radius: 28px;
+      background: #fff;
+      border: 1px solid rgba(185,154,95,0.24);
+      padding: 26px;
+      box-shadow: 0 10px 34px rgba(38,33,28,0.06);
+    }
+
+    .quick-card h3 {
+      margin: 0 0 14px;
+      font-size: 21px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .dot.ok { background: rgba(79,107,82,0.12); color: var(--ok); }
+    .dot.no { background: rgba(138,77,66,0.12); color: var(--danger); }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 11px;
+    }
+
+    li {
+      position: relative;
+      padding-left: 24px;
+      color: var(--muted);
+    }
+
+    li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .note {
+      margin: 0 0 44px;
+      padding: 18px 20px;
+      border: 1px solid rgba(185,154,95,0.32);
+      border-left: 5px solid var(--gold);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.72);
+      color: var(--muted);
+    }
+
+    .note strong { color: var(--ink); }
+
+    .help {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      border-radius: 30px;
+      padding: 30px;
+      background: var(--ink);
+      color: #fff7e8;
+      box-shadow: var(--shadow);
+    }
+
+    .help h2 {
+      margin: 0 0 8px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 34px;
+      font-weight: 500;
+    }
+
+    .help p {
+      margin: 0;
+      color: rgba(255,247,232,0.78);
+    }
+
+    .help .contact {
+      display: grid;
+      gap: 8px;
+      justify-items: end;
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
+    .help a { text-decoration: none; }
+
+    footer {
+      border-top: 1px solid rgba(185,154,95,0.22);
+      background: rgba(255,255,255,0.55);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer .inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; padding-top: 44px; }
+      .hero-card { max-width: 560px; margin: 0 auto; }
+      .rule-grid { grid-template-columns: 1fr; }
+      .quick { grid-template-columns: 1fr; }
+      .help { grid-template-columns: 1fr; }
+      .help .contact { justify-items: start; white-space: normal; }
+    }
+
+    @media (max-width: 640px) {
+      .top-strip .inner { gap: 8px; }
+      .nav { align-items: flex-start; flex-direction: column; }
+      .nav-links { justify-content: flex-start; gap: 12px; }
+      .hero { padding-left: 18px; padding-right: 18px; }
+      main { padding-left: 18px; padding-right: 18px; }
+      .hero-card { padding: 22px; border-radius: 26px; }
+      .rule-card, .quick-card, .help { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Pagrindinė navigacija">
+      <a class="brand" href="https://www.goldinga.lt/" aria-label="Goldinga pradžia">
+        <span class="brand-mark">G</span>
+        <span class="brand-text">
+          <strong>Goldinga</strong>
+          <span>Juvelyrika nuo 1993</span>
+        </span>
+      </a>
+
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <span class="eyebrow">Pakavimo gairės</span>
+      <h1>Kaip saugiai supakuoti grąžinamą prekę?</h1>
+      <p class="lead">Grąžinant juvelyrinius gaminius svarbiausia pasirinkti tvirtą išorinę dėžutę ir ją sandariai užklijuoti, kad papuošalas būtų apsaugotas transportavimo metu.</p>
+
+    </div>
+
+    <aside class="hero-card" aria-label="Pakavimo iliustracija">
+      <svg class="package-illustration" viewBox="0 0 520 360" role="img" aria-label="Tvirta siuntimo dėžutė juvelyrikai">
+        <defs>
+          <linearGradient id="boxTop" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="#fff6e6" />
+            <stop offset="1" stop-color="#dcc28d" />
+          </linearGradient>
+          <linearGradient id="boxSide" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="#d9bd84" />
+            <stop offset="1" stop-color="#b69558" />
+          </linearGradient>
+          <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#2b241c" flood-opacity="0.16" />
+          </filter>
+        </defs>
+        <ellipse cx="260" cy="304" rx="164" ry="28" fill="#dac9ac" opacity="0.35" />
+        <g filter="url(#shadow)">
+          <path d="M124 130 L260 70 L396 130 L260 194 Z" fill="url(#boxTop)" stroke="#8a6f3f" stroke-width="3" />
+          <path d="M124 130 L260 194 L260 310 L124 242 Z" fill="#c9aa6c" stroke="#8a6f3f" stroke-width="3" />
+          <path d="M396 130 L260 194 L260 310 L396 242 Z" fill="url(#boxSide)" stroke="#8a6f3f" stroke-width="3" />
+          <path d="M260 194 L260 310" stroke="#8a6f3f" stroke-width="3" />
+          <path d="M190 108 L328 172" stroke="#fff8eb" stroke-width="14" opacity="0.75" />
+          <path d="M328 108 L190 172" stroke="#fff8eb" stroke-width="14" opacity="0.75" />
+        </g>
+        <circle cx="410" cy="78" r="42" fill="#fffdf8" stroke="#b99a5f" stroke-width="3" />
+        <path d="M391 77 L405 91 L431 60" fill="none" stroke="#4f6b52" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <h2>Tvirta dėžutė</h2>
+      <p>Juvelyrikos siunta turi būti apsaugota nuo suspaudimo, atsivėrimo ir pažeidimų rūšiavimo metu.</p>
+    </aside>
+  </section>
+
+  <main>
+    <section id="taisykles">
+      <div class="rule-grid">
+        <article class="rule-card">
+          <div class="number">1</div>
+          <h3>Tvirta išorinė dėžutė</h3>
+          <p>Naudokite standaus kartono dėžutę lygiais kraštais. Ji turi apsaugoti papuošalą rūšiavimo ir transportavimo metu.</p>
+        </article>
+
+        <article class="rule-card">
+          <div class="number">2</div>
+          <h3>Sandariai užklijuota</h3>
+          <p>Dėžutė turi būti užklijuota taip, kad turinio nebūtų galima pasiekti nepažeidus pakuotės.</p>
+        </article>
+
+        <article class="rule-card">
+          <div class="number">3</div>
+          <h3>Etiketė turi tilpti</h3>
+          <p>Ant išorinės dėžutės turi pilnai tilpti užklijuota nesulenkta siuntos etiketė. Etiketės nereikėtų lenkti per dėžutės kraštus ar klijuoti ant kampų.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="trumpai">
+      <div class="section-head">
+        <h2>Trumpai: kas tinka ir ko vengti?</h2>
+      </div>
+
+      <div class="quick">
+        <article class="quick-card">
+          <h3><span class="dot ok">✓</span> Tinka</h3>
+          <ul>
+            <li>Standi kartoninė dėžutė lygiais kraštais.</li>
+            <li>Pakuotė užklijuota tvirtai ir sandariai.</li>
+            <li>Viena siunta supakuota kaip viena atskira pakuotė.</li>
+            <li>Išorinė dėžutė, ant kurios telpa nesulenkta siuntos etiketė.</li>
+          </ul>
+        </article>
+
+        <article class="quick-card">
+          <h3><span class="dot no">×</span> Vengti</h3>
+          <ul>
+            <li>Papuošalo dėžutės be papildomos išorinės pakuotės.</li>
+            <li>Per mažos pakuotės, ant kurių etiketę reikėtų lenkti per kraštus.</li>
+            <li>Kelių atskirų pakuočių suklijavimo į vieną siuntą.</li>
+            <li>Iš pakuotės išlindusių dalių, virvelių ar plėvelės kraštų.</li>
+          </ul>
+        </article>
+      </div>
+
+    </section>
+
+    <section class="help" id="pagalba">
+      <div>
+        <h2>Reikia pagalbos?</h2>
+        <p>Jeigu nesate tikri, kaip supakuoti grąžinamą juvelyrinį gaminį, susisiekite su mumis prieš išsiųsdami siuntą.</p>
+      </div>
+      <div class="contact">
+        <span>Goldinga</span>
+        <a href="tel:+37062555585">+370 625 55585</a>
+        <a href="mailto:info@goldinga.lt">info@goldinga.lt</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="inner">
+      <span>© Goldinga</span>
+      <span>Pakavimo gairės grąžinant juvelyrinius gaminius</span>
+    </div>
+  </footer>
+</body>
+</html>
